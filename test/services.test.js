@@ -85,6 +85,13 @@ describe("Event Service",()=> {
         expect(eventService.hasEventOn(time)).toStrictEqual(expected)
     })
 
+    test('getEvents shall return 0 event at on a specified time', async () => {
+        let eventService = new EventService(new EventRepository())
+        let time = new Date('2222-04-01T12:00:00')
+        let expected = [];
+        expect(eventService.hasEventOn(time)).toStrictEqual(expected)
+    })
+
 
     test('getEvents shall return an event specified by its name', async () => {
         let eventService = new EventService(new EventRepository())
