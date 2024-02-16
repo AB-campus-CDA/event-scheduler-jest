@@ -84,4 +84,21 @@ describe("Event Service",()=> {
         ];
         expect(eventService.hasEventOn(time)).toStrictEqual(expected)
     })
+
+
+    test('getEvents shall return an event specified by its name', async () => {
+        let eventService = new EventService(new EventRepository())
+        let name = "Hello World"
+        let expected = new Event(new Date('2019-12-17T03:24:00'),new Date('2019-12-31T13:24:00'),"Hello World","Campus Numerique","This is an hello world..")
+        expect(eventService.getEventByTitle(name)).toStrictEqual(expected)
+    })
+
+
+    test('getEvents shall return an event specified by a wrong name', async () => {
+        let eventService = new EventService(new EventRepository())
+        expect(eventService.getEventByTitle("unnamed")).toBe(null)
+    })
+
+
+
 });

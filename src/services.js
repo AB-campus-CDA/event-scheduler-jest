@@ -83,7 +83,8 @@ export default class EventService {
      * @return {null | Event}
      */
     getEventByTitle(title) {
-        return null
+        return this._eventRepository.getAll()
+            .filter(e => title === e.getTitle() )[0] || null
     }
 
     // A implementer en TDD
