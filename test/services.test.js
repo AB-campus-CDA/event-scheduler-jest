@@ -61,6 +61,7 @@ describe("Event Service",()=> {
         expect(eventService.getLastEvent()).toStrictEqual(finDuMonde);
     })
 
+
     test('getEvents shall return the longest boring event', async () => {
         let eventService = new EventService(new EventRepository())
         let longuest = new Event(new Date('1995-12-17T03:24:00'),new Date('2018-12-17T03:24:00'),"First event","Campus Numerique","This is an hello world..")

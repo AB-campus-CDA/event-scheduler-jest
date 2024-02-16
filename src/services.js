@@ -35,7 +35,7 @@ export default class EventService {
     getFirstEvent() {
         return this._eventRepository.getAll()
             .filter(e => e.startTime > Date.now())
-            .sort((a,b)=> a.startTime - b.startTime)[0]
+            .sort((a,b)=> a.startTime - b.startTime)[0] || null
     }
 
     /**
@@ -44,7 +44,7 @@ export default class EventService {
      */
     getLastEvent() {
         return this._eventRepository.getAll()
-            .sort((a,b)=> b.startTime - a.startTime)[0]
+            .sort((a,b)=> b.startTime - a.startTime)[0] || null
     }
 
     /**
@@ -53,7 +53,7 @@ export default class EventService {
      */
     getLongestEvent() {
         return this._eventRepository.getAll()
-            .sort((a,b)=> (b.endTime - b.startTime) - (a.endTime - a.startTime))[0]
+            .sort((a,b)=> (b.endTime - b.startTime) - (a.endTime - a.startTime))[0] || null
     }
 
     /**
