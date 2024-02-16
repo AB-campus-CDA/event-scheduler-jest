@@ -27,6 +27,19 @@ export default class EventRepository {
     add(event){
         return false; //TODO
     }
+
+
+    /**
+     * Get first coming up next event
+     * @return Event
+     */
+    //getFirstEvent() {
+        //let first = new Event(new Date('2017-07-14T22:30:00'), new Date('2017-07-14T23:00:00'), "14 juillet", "Campus Numerique", "Feux d'artifice")
+
+        //return first
+
+        //return {description: first.description, title: first.title, location: first.location, endTime: first.endTime, startTime: first.startTime}
+    //}
 }
 
 export class InMemoryEventRepository extends EventRepository{

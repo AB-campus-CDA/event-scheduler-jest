@@ -1,6 +1,7 @@
 
 import EventRepository from "./repository";
 import Event from "./models";
+import EventSerializer from "./serializer";
 
 export default class EventService {
 
@@ -23,7 +24,7 @@ export default class EventService {
      * @return {Event[]}
      */
     getEvents() {
-        console.log(this._eventRepository.getAll())
+        //console.log(this._eventRepository.getAll()[0])
         return this._eventRepository.getAll();
     }
 
@@ -32,8 +33,11 @@ export default class EventService {
      * @return {null | Event}
      */
     getFirstEvent() {
-        return this._eventRepository.getAll()[0];
-        //return this._eventRepository.getComingUpNext();
+
+        //return this._eventRepository.getAll()[0]
+        return this._eventRepository.getAll()
+            .filter(e => e.startTime > Date.now())
+            .sort((a,b)=> a.startTime - b.startTime)[0]
     }
 
     /**
