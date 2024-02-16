@@ -32,4 +32,8 @@ describe("Event Service",()=> {
         let eventService = new EventService(new EventRepository());
         expect(eventService.getEvents().length).toBe(3);
     })
+
+    test('getEvents shall return the first ucoming event', async () => {
+        let eventService = new EventService()
+    })
 });
