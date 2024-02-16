@@ -33,8 +33,6 @@ export default class EventService {
      * @return {null | Event}
      */
     getFirstEvent() {
-
-        //return this._eventRepository.getAll()[0]
         return this._eventRepository.getAll()
             .filter(e => e.startTime > Date.now())
             .sort((a,b)=> a.startTime - b.startTime)[0]
@@ -45,7 +43,8 @@ export default class EventService {
      * @return {null | Event}
      */
     getLastEvent() {
-        return null; //TODO
+        return this._eventRepository.getAll()
+            .sort((a,b)=> b.startTime - a.startTime)[0]
     }
 
     /**

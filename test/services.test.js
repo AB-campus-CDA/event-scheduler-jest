@@ -32,7 +32,7 @@ describe("Event Service",()=> {
         new Event(new Date('2019-12-17T03:24:00'),new Date('2019-12-17T13:24:00'),"Hello World","Campus Numerique","This is an hello world.."),
         new Event(new Date('2017-07-14T22:30:00'),new Date('2017-07-14T23:00:00'),"14 juillet","Campus Numerique","Feux d'artifice"),
         new Event(new Date('2018-12-17T03:24:00'),new Date('1995-12-17T03:24:00'),"First event","Campus Numerique","This is an hello world.."),
-        new Event(new Date('2025-04-01T09:00:00'),new Date('2025-04-01T17:00:00'),"Unit test that fuck","Campus Numerique","This is an hello world.."),
+        new Event(new Date('2025-04-01T09:00:00'),new Date('2025-04-01T17:00:00'),"Unit test that fuck","Campus Numerique","This is the FIN DU MONDE."),
         new Event(new Date('2020-04-01T09:00:00'),new Date('2020-04-01T17:00:00'),"Unit test again","Campus Numerique","This is an hello world..")
     ];
 
@@ -53,5 +53,12 @@ describe("Event Service",()=> {
 
         let feuxDartifice = new Event(new Date('2017-07-14T22:30:00'),new Date('2017-07-14T23:00:00'),"14 juillet","Campus Numerique","Feux d'artifice")
         expect(eventService.getFirstEvent()).toStrictEqual(feuxDartifice);
+    })
+
+    test('getEvents shall return the last event', async () => {
+        let eventService = new EventService(new EventRepository());
+
+        let finDuMonde = new Event(new Date('2025-04-01T09:00:00'),new Date('2025-04-01T17:00:00'),"Unit test that fuck","Campus Numerique","This is the FIN DU MONDE.")
+        expect(eventService.getLastEvent()).toStrictEqual(finDuMonde);
     })
 });
