@@ -52,7 +52,8 @@ export default class EventService {
      * @return {null | Event}
      */
     getLongestEvent() {
-        return null; //TODO
+        return this._eventRepository.getAll()
+            .sort((a,b)=> (b.endTime - b.startTime) - (a.endTime - a.startTime))[0]
     }
 
     /**

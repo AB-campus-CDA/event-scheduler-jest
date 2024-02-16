@@ -29,9 +29,9 @@ describe("Event Service",()=> {
 
     let fakeEvents = [
         new Event(new Date('2000-12-17T03:24:00'),new Date('2000-12-17T13:24:00'),"2000","Campus Numerique","This is l'an 2000"),
-        new Event(new Date('2019-12-17T03:24:00'),new Date('2019-12-17T13:24:00'),"Hello World","Campus Numerique","This is an hello world.."),
+        new Event(new Date('2019-12-17T03:24:00'),new Date('2019-12-31T13:24:00'),"Hello World","Campus Numerique","This is an hello world.."),
         new Event(new Date('2017-07-14T22:30:00'),new Date('2017-07-14T23:00:00'),"14 juillet","Campus Numerique","Feux d'artifice"),
-        new Event(new Date('2018-12-17T03:24:00'),new Date('1995-12-17T03:24:00'),"First event","Campus Numerique","This is an hello world.."),
+        new Event(new Date('1995-12-17T03:24:00'),new Date('2018-12-17T03:24:00'),"First event","Campus Numerique","This is an hello world.."),
         new Event(new Date('2025-04-01T09:00:00'),new Date('2025-04-01T17:00:00'),"Unit test that fuck","Campus Numerique","This is the FIN DU MONDE."),
         new Event(new Date('2020-04-01T09:00:00'),new Date('2020-04-01T17:00:00'),"Unit test again","Campus Numerique","This is an hello world..")
     ];
@@ -49,7 +49,6 @@ describe("Event Service",()=> {
 
     test('getEvents shall return the first upcoming event', async () => {
         let eventService = new EventService(new EventRepository());
-        // considering we are at date : 2017-07-14T22:29:59
 
         let feuxDartifice = new Event(new Date('2017-07-14T22:30:00'),new Date('2017-07-14T23:00:00'),"14 juillet","Campus Numerique","Feux d'artifice")
         expect(eventService.getFirstEvent()).toStrictEqual(feuxDartifice);
@@ -60,5 +59,11 @@ describe("Event Service",()=> {
 
         let finDuMonde = new Event(new Date('2025-04-01T09:00:00'),new Date('2025-04-01T17:00:00'),"Unit test that fuck","Campus Numerique","This is the FIN DU MONDE.")
         expect(eventService.getLastEvent()).toStrictEqual(finDuMonde);
+    })
+
+    test('getEvents shall return the longest boring event', async () => {
+        let eventService = new EventService(new EventRepository())
+        let longuest = new Event(new Date('1995-12-17T03:24:00'),new Date('2018-12-17T03:24:00'),"First event","Campus Numerique","This is an hello world..")
+        expect(eventService.getLongestEvent()).toStrictEqual(longuest)
     })
 });
