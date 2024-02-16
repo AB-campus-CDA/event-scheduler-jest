@@ -33,7 +33,8 @@ describe("Event Service",()=> {
         new Event(new Date('2017-07-14T22:30:00'),new Date('2017-07-14T23:00:00'),"14 juillet","Campus Numerique","Feux d'artifice"),
         new Event(new Date('1995-12-17T03:24:00'),new Date('2018-12-17T03:24:00'),"First event","Campus Numerique","This is an hello world.."),
         new Event(new Date('2025-04-01T09:00:00'),new Date('2025-04-01T17:00:00'),"Unit test that fuck","Campus Numerique","This is the FIN DU MONDE."),
-        new Event(new Date('2020-04-01T09:00:00'),new Date('2020-04-01T17:00:00'),"Unit test again","Campus Numerique","This is an hello world..")
+        new Event(new Date('2020-04-01T09:00:00'),new Date('2020-04-01T17:00:00'),"Unit test again","Campus Numerique","This is an hello world.."),
+        new Event(new Date('2020-04-01T09:05:00'),new Date('2020-04-01T16:00:00'),"Unit test again","Campus Numerique","This is an hello world..")
     ];
 
     test('getEvents shall call repository', async () => {
@@ -44,7 +45,7 @@ describe("Event Service",()=> {
 
     test('getEvents shall return 6 results', async () => {
         let eventService = new EventService(new EventRepository());
-        expect(eventService.getEvents().length).toBe(6);
+        expect(eventService.getEvents().length).toBe(fakeEvents.length);
     })
 
     test('getEvents shall return the first upcoming event', async () => {
@@ -72,5 +73,15 @@ describe("Event Service",()=> {
         let shortest =         new Event(new Date('2000-12-17T03:24:00'),new Date('2000-12-17T03:25:00'),"2000","Campus Numerique","This is l'an 2000")
 
         expect(eventService.getShortestEvent()).toStrictEqual(shortest)
+    })
+
+    test('getEvents shall return events at on a specified time', async () => {
+        let eventService = new EventService(new EventRepository())
+        let time = new Date('2020-04-01T12:00:00')
+        let expected = [
+            new Event(new Date('2020-04-01T09:00:00'),new Date('2020-04-01T17:00:00'),"Unit test again","Campus Numerique","This is an hello world.."),
+            new Event(new Date('2020-04-01T09:05:00'),new Date('2020-04-01T16:00:00'),"Unit test again","Campus Numerique","This is an hello world..")
+        ];
+        expect(eventService.hasEventOn(time)).toStrictEqual(expected)
     })
 });

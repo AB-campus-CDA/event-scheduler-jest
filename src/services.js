@@ -72,10 +72,8 @@ export default class EventService {
      * @return {Event[]}
      */
     hasEventOn(time) {
-        let evts = this._eventRepository.getAll();
-        return evts.filter(function (e) {
-            return time >= e.getStartTime() && time <= e.getEndTime();
-        });
+        return this._eventRepository.getAll()
+            .filter(e => time >= e.getStartTime() && time <= e.getEndTime()) || null
     }
 
     // A implementer en TDD

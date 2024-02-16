@@ -60,4 +60,10 @@ describe("Event Service",()=> {
         let eventService = new EventService(new EventRepository())
         expect(eventService.getShortestEvent()).toBe(null)
     })
+
+    test('getEvents shall return events at on a specified time', async () => {
+        let eventService = new EventService(new EventRepository())
+        let time = new Date('1901-04-01T12:00:00')
+        expect(eventService.hasEventOn(time).length).toBe(0)
+    })
 });
