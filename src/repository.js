@@ -1,7 +1,7 @@
 import Event from "./models"
 
 /**
- * The event repository is responsible of events storage from database
+ * The event repository is responsible for events storage from database
  */
 export default class EventRepository {
 

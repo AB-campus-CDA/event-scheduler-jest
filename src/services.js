@@ -23,19 +23,21 @@ export default class EventService {
      * @return {Event[]}
      */
     getEvents() {
+        console.log(this._eventRepository.getAll())
         return this._eventRepository.getAll();
     }
 
     /**
-     * Get the first upcomming event
+     * Get the first upcoming event
      * @return {null | Event}
      */
     getFirstEvent() {
-        return null; //TODO
+        return this._eventRepository.getAll()[0];
+        //return this._eventRepository.getComingUpNext();
     }
 
     /**
-     * Get the last upcomming event
+     * Get the last upcoming event
      * @return {null | Event}
      */
     getLastEvent() {
