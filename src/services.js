@@ -61,7 +61,8 @@ export default class EventService {
      * @return {null | Event}
      */
     getShortestEvent() {
-        return null; //TODO
+        return this._eventRepository.getAll()
+            .sort((a,b)=> (a.endTime - a.startTime) - (b.endTime - b.startTime) )[0] || null
     }
 
     // A implementer en TDD

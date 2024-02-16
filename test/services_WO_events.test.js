@@ -51,9 +51,13 @@ describe("Event Service",()=> {
         expect(eventService.getLastEvent()).toBe(null);
     })
 
-
     test('getEvents shall return the longest boring event', async () => {
         let eventService = new EventService(new EventRepository())
         expect(eventService.getLongestEvent()).toBe(null)
+    })
+
+    test('getEvents shall return the shortest fun event', async () => {
+        let eventService = new EventService(new EventRepository())
+        expect(eventService.getShortestEvent()).toBe(null)
     })
 });
