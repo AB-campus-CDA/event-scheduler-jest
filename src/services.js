@@ -29,7 +29,7 @@ export default class EventService {
     }
 
     /**
-     * Get the first upcoming event
+     * Get the first upcoming event : filter event after now, sort by startTime, return the fist
      * @return {null | Event}
      */
     getFirstEvent() {
@@ -39,7 +39,7 @@ export default class EventService {
     }
 
     /**
-     * Get the last upcoming event
+     * Get the last upcoming event : reverse sort by startTime, return the fist
      * @return {null | Event}
      */
     getLastEvent() {
@@ -48,7 +48,7 @@ export default class EventService {
     }
 
     /**
-     * Get the longest event
+     * Get the longest event : sort by length, return de first
      * @return {null | Event}
      */
     getLongestEvent() {
