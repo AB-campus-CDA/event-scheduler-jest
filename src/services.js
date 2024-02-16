@@ -87,13 +87,6 @@ export default class EventService {
             .filter(e => title === e.getTitle() )[0] || null
     }
 
-    // A implementer en TDD
-    /**
-     *
-     * @param {Date} time
-     */
-    isLocationAvailable(time) {
-    }
 
     /**
      * Get current events
