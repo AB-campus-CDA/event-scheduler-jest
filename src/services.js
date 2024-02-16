@@ -84,7 +84,7 @@ export default class EventService {
      */
     getEventByTitle(title) {
         return this._eventRepository.getAll()
-            .filter(e => title === e.getTitle() )[0] || null
+            .filter(e => title === e.getTitle() )[0] || "null"
     }
 
 
